@@ -8,6 +8,7 @@
     "clsx": "^1.0.4",
     "http-proxy-middleware": "^0.19.1",
     "mui-datatables": "^2.6.0",
+    "npm": "^6.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",

@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import MUIDataTable from "mui-datatables";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button';
+// import { DetailModal } from '../../modal/detailModal/detailModal';
+const DetailModal = React.lazy(() => import('../../modal/detailModal/detailModal'));
 
 
 export default function TradesTable({ data }) {
@@ -14,7 +10,7 @@ export default function TradesTable({ data }) {
 
     function handleOpen() {
         setOpen(true);
-    }
+    }    
 
     function handleClose() {
         setOpen(false);
@@ -129,34 +125,9 @@ export default function TradesTable({ data }) {
                 columns={columns}
                 options={options}
             />
-            <Modal open={open} handleClose={handleClose} id={selectedRowId} />
+            <Suspense fallback={<div>Loading</div>}>
+                <DetailModal open={open} handleClose={handleClose} id={selectedRowId} />
+            </Suspense>
         </>
-    )
-}
-
-const Modal = ({ open, handleClose, id }) => {
-    return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-        >
-            <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending anonymous location data to
-                    Google, even when no apps are running. {id}
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    Disagree
-                 </Button>
-                <Button onClick={handleClose} color="primary" autoFocus>
-                    Agree
-                 </Button>
-            </DialogActions>
-        </Dialog>
     )
 }
