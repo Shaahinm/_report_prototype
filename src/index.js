@@ -5,9 +5,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import Report from './report';
 import theme from "./styles/theme"
 ReactDOM.render(
-    <ThemeProvider theme={theme}>    
-            <CssBaseline />
-            <Report />        
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Report />
     </ThemeProvider>
     , document.getElementById('root'));
 

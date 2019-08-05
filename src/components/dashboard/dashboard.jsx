@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import TradesTable from './tables/trades-table'
 import { mockdata } from "../../data/mockData";
+import { createUrlFor, GET_REPORTS } from '../../data/endpoints';
 
 const useStyles = makeStyles(theme => ({
     appBarSpacer: theme.mixins.toolbar,
@@ -41,7 +42,7 @@ export default function Dashboard() {
     const [tableType, setTableType] = useState(tableTypes.TRADES)
 
     useEffect(() => {
-        // fetch('https://api-v3.mbta.com/routes')
+        // fetch(createUrlFor(GET_REPORTS))
         //     .then(response => response.json())
         //     .then(data => setData(data.data))        
         setData(mockdata.data.tradeDetails)              
